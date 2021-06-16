@@ -1,0 +1,3 @@
+[submodule "NettEngine/vendor/spdlog"]
+	path = NettEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog
