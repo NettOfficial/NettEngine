@@ -8,7 +8,13 @@ workspace "NettEngine"
 		"Dist"
 	}
 
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+	-- Include directiroes relative to root folder (Solution directory)
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "NettEngine/vendor/GLFW/include"
+
+	include "NettEngine/vendor/GLFW"
 
 project "NettEngine"
 	location "NettEngine"
@@ -31,7 +37,13 @@ project "NettEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

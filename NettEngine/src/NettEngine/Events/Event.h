@@ -1,7 +1,7 @@
 #pragma once
 
+#include "nepch.h"
 #include "NettEngine/Core.h"
-//#include "spdlog/fmt/ostr.h"
 
 
 namespace NettEngine {

@@ -1,3 +1,6 @@
 [submodule "NettEngine/vendor/spdlog"]
 	path = NettEngine/vendor/spdlog
 	url = https://github.com/gabime/spdlog
+[submodule "NettEngine/vendor/GLFW"]
+	path = NettEngine/vendor/GLFW
+	url = https://github.com/TheCherno/GLFW
