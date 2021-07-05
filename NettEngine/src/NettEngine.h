@@ -3,9 +3,8 @@
 // For use by NettEngine applications
 
 #include "NettEngine/Application.h"
-
+#include "NettEngine/Layer.h"
 #include "NettEngine/Log.h"
-#include "NettEngine/Log.cpp"
 
 
 // ----------------------------Engry Point------------------------------------------------------------------------

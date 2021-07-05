@@ -37,6 +37,12 @@
     <ClInclude Include="src\NettEngine\Events\MouseEvent.h">
       <Filter>NettEngine\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\NettEngine\Layer.h">
+      <Filter>NettEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="src\NettEngine\LayerStack.h">
+      <Filter>NettEngine</Filter>
+    </ClInclude>
     <ClInclude Include="src\NettEngine\Log.h">
       <Filter>NettEngine</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\NettEngine\Application.cpp">
+      <Filter>NettEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NettEngine\Layer.cpp">
+      <Filter>NettEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="src\NettEngine\LayerStack.cpp">
       <Filter>NettEngine</Filter>
     </ClCompile>
     <ClCompile Include="src\NettEngine\Log.cpp">
