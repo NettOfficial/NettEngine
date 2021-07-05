@@ -1,8 +1,6 @@
 #include "nepch.h"
-#include "Application.h"
 
-#include "NettEngine/Events/ApplicationEvent.h"
-#include "NettEngine/Log.h"
+#include "Application.h"
 
 #include <GLFW/glfw3.h>
 
@@ -23,12 +21,16 @@ namespace NettEngine {
 
 	void Application::OnEvent(Event& e)
 	{
-		NE_CORE_INFO("{0}", e);
+		EventDispatcher dispatcher(e);
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		NE_CORE_WARN("{0}", e);
 	}
+
 
 	void Application::Run() 
 	{
-
+		NettEngine::Log::Init();
 		while (m_Running)
 		{ 
 			glClearColor(1, 0, 1, 1);
@@ -36,5 +38,11 @@ namespace NettEngine {
 			m_Window->OnUpdate();
 		}
 
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e) 
+	{
+		m_Running = false;
+		return true;
 	}
 }
