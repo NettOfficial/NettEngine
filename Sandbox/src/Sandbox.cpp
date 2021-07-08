@@ -1,4 +1,5 @@
 #include <NettEngine.h>
+#include <NettEngine/Log.cpp>
 
 class ExampleLayer : public NettEngine::Layer
 {
