@@ -1,11 +1,9 @@
 #include <NettEngine.h>
-#include <NettEngine/Log.cpp>
 
 class ExampleLayer : public NettEngine::Layer
 {
 public:
-	ExampleLayer()
-		: Layer("Example")
+	ExampleLayer() : Layer("Example")
 	{
 
 	}
@@ -27,6 +25,7 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
+		PushOverlay(new NettEngine::ImGuiLayer());
 	}
 
 	~Sandbox()

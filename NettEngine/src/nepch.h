@@ -14,7 +14,6 @@
 
 #include "NettEngine/Log.h"
 
-
 #ifdef NE_PLATFORM_WINDOWS
 	#include <Windows.h>
 #endif

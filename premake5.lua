@@ -13,8 +13,12 @@ workspace "NettEngine"
 	-- Include directiroes relative to root folder (Solution directory)
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "NettEngine/vendor/GLFW/include"
+	IncludeDir["Glad"] = "NettEngine/vendor/Glad/include"
+	IncludeDir["Imgui"] = "NettEngine/vendor/imgui"
 
 	include "NettEngine/vendor/GLFW"
+	include "NettEngine/vendor/Glad"
+	include "NettEngine/vendor/imgui"
 
 project "NettEngine"
 	location "NettEngine"
@@ -37,12 +41,16 @@ project "NettEngine"
 	{
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}",
+		"%{IncludeDir.Imgui}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 
@@ -53,10 +61,11 @@ project "NettEngine"
 
 		defines
 		{
-		 "NE_PLATFORM_WINDOWS;",
-		 "NE_BUILD_DLL;",
-		 "NETTENGINE_API;",
-		 "_WINDLL;"
+		 "NE_PLATFORM_WINDOWS",
+		 "NE_BUILD_DLL",
+		 "NETTENGINE_API",
+		 "_WINDLL",
+		 "GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands

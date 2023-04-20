@@ -4,3 +4,6 @@
 [submodule "NettEngine/vendor/GLFW"]
 	path = NettEngine/vendor/GLFW
 	url = https://github.com/TheCherno/GLFW
+[submodule "NettEngine/vendor/imgui"]
+	path = NettEngine/vendor/imgui
+	url = https://github.com/TheCherno/imgui

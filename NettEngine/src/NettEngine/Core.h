@@ -10,12 +10,14 @@
 	#error NettEngine only supports Windows
 #endif
 
-#ifdef HZ_ENABLE_ASSERTS
-	#define NE_ASSERT(x, ...) { if(!(x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-	#define NE_CORE_ASSERT(x, ...) { if(!(x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#ifdef NE_ENABLE_ASSERTS
+	#define NE_ASSERT(x, ...) { if(!(x)) { NE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+	#define NE_CORE_ASSERT(x, ...) { if(!(x)) { NE_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
 #else
 	#define NE_ASSERT(x, ...)
 	#define NE_CORE_ASSERT(x, ...)
 #endif
 
 #define BIT(x) (1 << x)
+
+#define NE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
