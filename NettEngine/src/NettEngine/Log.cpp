@@ -3,7 +3,6 @@
 
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-
 namespace NettEngine {
 
 	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
@@ -20,7 +19,7 @@ namespace NettEngine {
 		s_ClientLogger->set_level(spdlog::level::trace);
 	}
 
-	
+	/*
 	std::shared_ptr<spdlog::logger>& Log::GetCoreLogger()
 	{
 		return s_CoreLogger;
@@ -30,5 +29,6 @@ namespace NettEngine {
 	{
 		return s_ClientLogger;
 	}
+	*/
 	
 }

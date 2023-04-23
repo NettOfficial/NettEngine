@@ -10,12 +10,24 @@ public:
 
 	void OnUpdate() override
 	{
-		NE_INFO("ExampleLayer::Update");
+		if (NettEngine::Input::IsKeyPressed(NE_KEY_TAB))
+		{
+			NE_TRACE("Tab key is pressed (poll)!");
+		}
+			
 	}
 
 	void OnEvent(NettEngine::Event& event) override
 	{
-		NE_TRACE("{0}", event);
+		if (event.GetEventType() == NettEngine::EventType::KeyPressed)
+		{
+			NettEngine::KeyPressedEvent& e = (NettEngine::KeyPressedEvent&)event;
+			if (e.GetKeyCode() == NE_KEY_TAB)
+			{
+				NE_TRACE("Tab key is pressed (event)!");
+			}
+			NE_TRACE("{0}", (char)e.GetKeyCode());
+		}
 	}
 };
 

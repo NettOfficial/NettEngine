@@ -2,9 +2,11 @@
 
 #include "Application.h"
 
+#include "NettEngine/Log.h"
+
 #include <glad/glad.h>
 
-class NETTENGINE_API Log;
+#include "Input.h"
 
 namespace NettEngine {
 
@@ -65,8 +67,10 @@ namespace NettEngine {
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			for (Layer* layer : m_LayerStack)
+			{
 				layer->OnUpdate();
-
+			}
+				
 			m_Window->OnUpdate();
 		}
 

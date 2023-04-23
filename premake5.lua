@@ -1,5 +1,6 @@
 workspace "NettEngine"
 	architecture "x64"
+	startproject "Sandbox"
 
 	configurations
 	{
@@ -16,14 +17,18 @@ workspace "NettEngine"
 	IncludeDir["Glad"] = "NettEngine/vendor/Glad/include"
 	IncludeDir["Imgui"] = "NettEngine/vendor/imgui"
 
+group "Dependencies"
 	include "NettEngine/vendor/GLFW"
 	include "NettEngine/vendor/Glad"
 	include "NettEngine/vendor/imgui"
 
+group ""
+
 project "NettEngine"
 	location "NettEngine"
 	kind "SharedLib"
-	language "C++"
+	language "C++" 
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,42 +61,40 @@ project "NettEngine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
 		 "NE_PLATFORM_WINDOWS",
 		 "NE_BUILD_DLL",
-		 "NETTENGINE_API",
-		 "_WINDLL",
 		 "GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 		filter "configurations:Debug"
 			defines "NE_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 			
 		filter "configurations:Release"
 			defines "NE_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "NE_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -115,28 +118,24 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
 		{
-			"NE_PLATFORM_WINDOWS;",
-			"NE_BUILD_DLL;",
-			"NETTENGINE_API;",
-			"_WINDLL;"
+			"NE_PLATFORM_WINDOWS"
 		}
 
 		filter "configurations:Debug"
 			defines "NE_DEBUG"
-			buildoptions "/MDd"
+			runtime "Debug"
 			symbols "On"
 			
 		filter "configurations:Release"
 			defines "NE_RELEASE"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "NE_DIST"
-			buildoptions "/MD"
+			runtime "Release"
 			optimize "On"

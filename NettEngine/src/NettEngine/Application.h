@@ -7,7 +7,6 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
-
 namespace NettEngine {
 
 	class NETTENGINE_API Application
@@ -24,7 +23,7 @@ namespace NettEngine {
 		void PushOverlay(Layer* layer);
 
 		inline static Application& Get();
-		inline Window& GetWindow() { return *m_Window; }
+		inline Window& GetWindow() const { return *m_Window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
