@@ -22,7 +22,6 @@ group "Dependencies"
 	include "NettEngine/vendor/GLFW"
 	include "NettEngine/vendor/Glad"
 	include "NettEngine/vendor/imgui"
-	include "NettEngine/vendor/glm"
 
 group ""
 
