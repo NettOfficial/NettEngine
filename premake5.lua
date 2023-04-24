@@ -16,11 +16,13 @@ workspace "NettEngine"
 	IncludeDir["GLFW"] = "NettEngine/vendor/GLFW/include"
 	IncludeDir["Glad"] = "NettEngine/vendor/Glad/include"
 	IncludeDir["Imgui"] = "NettEngine/vendor/imgui"
+	IncludeDir["glm"] = "NettEngine/vendor/glm"
 
 group "Dependencies"
 	include "NettEngine/vendor/GLFW"
 	include "NettEngine/vendor/Glad"
 	include "NettEngine/vendor/imgui"
+	include "NettEngine/vendor/glm"
 
 group ""
 
@@ -39,7 +41,9 @@ project "NettEngine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -48,7 +52,8 @@ project "NettEngine"
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.Imgui}"
+		"%{IncludeDir.Imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -108,7 +113,8 @@ project "Sandbox"
 	includedirs
 	{
 		"NettEngine/vendor/spdlog/include",
-		"NettEngine/src"
+		"NettEngine/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

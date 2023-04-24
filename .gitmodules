@@ -7,3 +7,6 @@
 [submodule "NettEngine/vendor/imgui"]
 	path = NettEngine/vendor/imgui
 	url = https://github.com/TheCherno/imgui
+[submodule "NettEngine/vendor/glm"]
+	path = NettEngine/vendor/glm
+	url = https://github.com/g-truc/glm
