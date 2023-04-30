@@ -1,12 +1,16 @@
 #pragma once
 
 #ifdef NE_PLATFORM_WINDOWS
+#if NE_DYNAMIC_LINK
 	#ifdef NE_BUILD_DLL
 		#define NETTENGINE_API __declspec(dllexport)
 	#else
 		#define NETTENGINE_API __declspec(dllimport)
 	#endif
 #else
+	#define NETTENGINE_API
+#endif
+#else 
 	#error NettEngine only supports Windows
 #endif
 

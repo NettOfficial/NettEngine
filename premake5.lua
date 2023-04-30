@@ -27,9 +27,10 @@ group ""
 
 project "NettEngine"
 	location "NettEngine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++" 
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -43,6 +44,11 @@ project "NettEngine"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/**.hpp",
 		"%{prj.name}/vendor/glm/glm/**.inl"
+	}
+
+	defines
+	{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs
@@ -64,19 +70,13 @@ project "NettEngine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
 		{
-		 "NE_PLATFORM_WINDOWS",
-		 "NE_BUILD_DLL",
-		 "GLFW_INCLUDE_NONE"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+			"NE_PLATFORM_WINDOWS",
+			"NE_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		filter "configurations:Debug"
@@ -98,7 +98,8 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	cppdialect "C++17"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -112,6 +113,7 @@ project "Sandbox"
 	includedirs
 	{
 		"NettEngine/vendor/spdlog/include",
+		"NettEngine/vendor/",
 		"NettEngine/src",
 		"%{IncludeDir.glm}"
 	}
@@ -122,7 +124,6 @@ project "Sandbox"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines
@@ -130,17 +131,17 @@ project "Sandbox"
 			"NE_PLATFORM_WINDOWS"
 		}
 
-		filter "configurations:Debug"
-			defines "NE_DEBUG"
-			runtime "Debug"
-			symbols "On"
-			
-		filter "configurations:Release"
-			defines "NE_RELEASE"
-			runtime "Release"
-			optimize "On"
+	filter "configurations:Debug"
+		defines "NE_DEBUG"
+		runtime "Debug"
+		symbols "On"
+		
+	filter "configurations:Release"
+		defines "NE_RELEASE"
+		runtime "Release"
+		optimize "On"
 
-		filter "configurations:Dist"
-			defines "NE_DIST"
-			runtime "Release"
-			optimize "On"
+	filter "configurations:Dist"
+		defines "NE_DIST"
+		runtime "Release"
+		optimize "On"

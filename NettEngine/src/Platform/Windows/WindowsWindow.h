@@ -1,6 +1,7 @@
 #pragma once
 
 #include "NettEngine/Window.h"
+#include "NettEngine/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -29,6 +30,7 @@ namespace NettEngine{
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData
 		{

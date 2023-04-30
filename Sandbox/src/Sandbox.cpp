@@ -1,5 +1,7 @@
 #include <NettEngine.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public NettEngine::Layer
 {
 public:
@@ -15,6 +17,12 @@ public:
 			NE_TRACE("Tab key is pressed (poll)!");
 		}
 			
+	}
+	void OnImGuiRender() override
+	{
+		ImGui::Begin("Test");
+		ImGui::Text("Test");
+		ImGui::End();
 	}
 
 	void OnEvent(NettEngine::Event& event) override
@@ -37,7 +45,6 @@ public:
 	Sandbox()
 	{
 		PushLayer(new ExampleLayer());
-		PushOverlay(new NettEngine::ImGuiLayer());
 	}
 
 	~Sandbox()
