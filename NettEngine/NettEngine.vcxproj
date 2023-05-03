@@ -157,6 +157,7 @@
     <ClInclude Include="src\NettEngine\MouseButtonCodes.h" />
     <ClInclude Include="src\NettEngine\Renderer\Buffer.h" />
     <ClInclude Include="src\NettEngine\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\NettEngine\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\NettEngine\Renderer\RenderCommand.h" />
     <ClInclude Include="src\NettEngine\Renderer\Renderer.h" />
     <ClInclude Include="src\NettEngine\Renderer\RendererAPI.h" />
@@ -595,6 +596,7 @@
     <ClCompile Include="src\NettEngine\LayerStack.cpp" />
     <ClCompile Include="src\NettEngine\Log.cpp" />
     <ClCompile Include="src\NettEngine\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\NettEngine\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\NettEngine\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\NettEngine\Renderer\Renderer.cpp" />
     <ClCompile Include="src\NettEngine\Renderer\RendererAPI.cpp" />
