@@ -8,9 +8,4 @@ namespace NettEngine {
 	{
 
 	}
-
-	Layer::~Layer()
-	{
-
-	}
 }

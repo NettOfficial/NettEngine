@@ -7,6 +7,10 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
+#include "Renderer/Shader.h"
+#include "Renderer/Buffer.h"
+#include "Renderer/VertexArray.h"
+
 #include "NettEngine/ImGui/ImGuiLayer.h"
 
 namespace NettEngine {
@@ -15,7 +19,7 @@ namespace NettEngine {
 	{
 	public:
 		Application();
-		virtual ~Application();
+		virtual ~Application() = default;
 
 		void Run();
 
@@ -26,13 +30,19 @@ namespace NettEngine {
 
 		inline static Application& Get() { return *s_Instance; };
 		inline Window& GetWindow() const { return *m_Window; }
+
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 
+	private:
 		std::unique_ptr<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
 		static Application* s_Instance;
 	};
 

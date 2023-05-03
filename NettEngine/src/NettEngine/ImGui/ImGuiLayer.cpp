@@ -18,10 +18,6 @@ namespace NettEngine
 	{
 	}
 
-	ImGuiLayer::~ImGuiLayer()
-	{
-	}
-
 	void ImGuiLayer::OnAttach()
 	{
 		IMGUI_CHECKVERSION();

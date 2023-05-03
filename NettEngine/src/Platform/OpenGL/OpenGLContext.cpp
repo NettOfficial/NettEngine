@@ -18,6 +18,8 @@ namespace NettEngine
 		glfwMakeContextCurrent(m_WindowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		NE_CORE_ASSERT(status, "Failed to initialize Glad!");
+
+		NE_CORE_INFO("OpenGL Renderer: {0}, {1}", glGetString(GL_VENDOR), glGetString(GL_RENDERER));
 	}
 
 	void OpenGLContext::SwapBuffers()
