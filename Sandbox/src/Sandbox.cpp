@@ -1,7 +1,10 @@
 #include <NettEngine.h>
 
+#include "Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 #include "glm/ext/matrix_transform.inl"
+#include "glm/gtc/type_ptr.inl"
 
 class ExampleLayer : public NettEngine::Layer
 {
@@ -67,10 +70,10 @@ public:
 			}
 		)";
 
-		m_Shader.reset(new NettEngine::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(NettEngine::Shader::Create(vertexSrc, fragmentSrc));
 	}
 
-	void OnUpdate(NettEngine::Timestep ts) override
+	virtual void OnUpdate(NettEngine::Timestep ts) override
 	{
 		ProcessCameraInput(ts);
 
@@ -82,26 +85,26 @@ public:
 
 		NettEngine::Renderer::BeginScene(m_Camera);
 
-		glm::vec4 blueColor(0.2f, 0.3f, 0.8f, 1.f);
-		glm::vec4 redColor(0.8f, 0.3f, 0.2f, 0.5f);
+		std::dynamic_pointer_cast<NettEngine::OpenGLShader>(m_Shader)->Bind();
+		std::dynamic_pointer_cast<NettEngine::OpenGLShader>(m_Shader)->UploadUniformFloat4("u_Color", m_TriangleColor);
 
-		glm::vec3 pos(-0.5f);
-		glm::mat4 transform = glm::translate(glm::mat4(1.f), pos);
-
-		m_Shader->UploadUniformFloat4("u_Color", blueColor);
 		NettEngine::Renderer::Submit(m_Shader, m_VertexArray);
 
-		m_Shader->UploadUniformFloat4("u_Color", redColor);
+		const glm::vec3 pos(-0.5f);
+		const glm::mat4 transform = glm::translate(glm::mat4(1.f), pos);
+
 		NettEngine::Renderer::Submit(m_Shader, m_VertexArray, transform);
 
-		NettEngine::Renderer::EndScene();
+		NettEngine::Renderer::EndScene(); 
 	}
-	void OnImGuiRender() override
+	virtual void OnImGuiRender() override
 	{
-		
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit4("Triangles color", glm::value_ptr(m_TriangleColor));
+		ImGui::End();
 	}
 
-	void OnEvent(NettEngine::Event& event) override
+	virtual void OnEvent(NettEngine::Event& event) override
 	{
 		
 	}
@@ -146,6 +149,8 @@ private:
 
 	float m_CameraRotation = 0.f;
 	float m_CameraRotationSpeed = 90.f;
+
+	glm::vec4 m_TriangleColor = { 0.2f, 0.3f, 0.8f, 1.f };
 };
 
 class Sandbox : public NettEngine::Application
