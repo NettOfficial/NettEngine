@@ -143,6 +143,7 @@
     <ClInclude Include="src\NettEngine.h" />
     <ClInclude Include="src\NettEngine\Application.h" />
     <ClInclude Include="src\NettEngine\Core.h" />
+    <ClInclude Include="src\NettEngine\Core\Timestep.h" />
     <ClInclude Include="src\NettEngine\EntryPoint.h" />
     <ClInclude Include="src\NettEngine\Events\ApplicationEvent.h" />
     <ClInclude Include="src\NettEngine\Events\Event.h" />

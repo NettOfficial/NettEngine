@@ -3,6 +3,8 @@
 #include "NettEngine/Core.h"
 #include "NettEngine/Events/Event.h"
 
+#include "Core/Timestep.h"
+
 namespace NettEngine {
 
 	class NETTENGINE_API Layer
@@ -14,7 +16,7 @@ namespace NettEngine {
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 
 		virtual void OnImGuiRender() {}
 

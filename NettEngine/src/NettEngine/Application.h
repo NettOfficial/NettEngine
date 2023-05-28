@@ -7,10 +7,7 @@
 #include "Events/Event.h"
 #include "Events/ApplicationEvent.h"
 
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-#include "Renderer/OrthographicCamera.h"
+#include "NettEngine/Core/Timestep.h"
 
 #include "NettEngine/ImGui/ImGuiLayer.h"
 
@@ -42,11 +39,7 @@ namespace NettEngine {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
-
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		OrthographicCamera m_Camera;
+		float m_LastFrameTime = 0.f;
 
 		static Application* s_Instance;
 	};
