@@ -22,6 +22,7 @@
 
 #include "NettEngine/Renderer/Buffer.h"
 #include "NettEngine/Renderer/Shader.h"
+#include "NettEngine/Renderer/Texture.h"
 #include "NettEngine/Renderer/VertexArray.h"
 //----------------------------------------------------------------------------------------------------------------
 

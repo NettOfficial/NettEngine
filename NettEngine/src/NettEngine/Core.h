@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #ifdef NE_PLATFORM_WINDOWS
 #if NE_DYNAMIC_LINK
 	#ifdef NE_BUILD_DLL
@@ -29,3 +31,12 @@
 #define BIT(x) (1 << x)
 
 #define NE_BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)
+
+namespace NettEngine
+{
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template<typename T>
+	using Ref = std::shared_ptr<T>;
+}
